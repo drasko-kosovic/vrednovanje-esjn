@@ -1,0 +1,39 @@
+{
+  "name": "Postupci",
+  "fields": [
+    {
+      "fieldName": "sifraPostupka",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "brojTendera",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "opisPostupka",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "vrstaPostupka",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "datumObjave",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [],
+  "entityTableName": "postupci",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210514185819"
+}
