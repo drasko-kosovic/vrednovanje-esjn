@@ -1,52 +1,64 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 
 import { IPonude } from '../ponude.model';
+
 import { PonudeService } from '../service/ponude.service';
-import { PonudeDeleteDialogComponent } from '../delete/ponude-delete-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'jhi-ponude',
   templateUrl: './ponude.component.html',
   styleUrls: ['./ponude.component.scss'],
 })
-export class PonudeComponent implements OnInit {
+export class PonudeComponent implements OnInit, AfterViewInit {
   ponudes?: IPonude[];
-  isLoading = false;
+  public displayedColumns = [
+    'id',
+    'sifra postupka',
+    'sifra ponude',
+    'broj partije',
+    'naziv ponudjaca',
+    'naziv proizvodjaca',
+    'zasticeni naziv',
+    'ponudjena vrijednost',
+    'rok isporuke',
+  ];
+  public dataSource = new MatTableDataSource<IPonude>();
 
-  constructor(protected ponudeService: PonudeService, protected modalService: NgbModal) {}
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @Input() postupak: any;
+  constructor(protected ponudeService: PonudeService) {}
 
-  loadAll(): void {
-    this.isLoading = true;
-
-    this.ponudeService.query().subscribe(
-      (res: HttpResponse<IPonude[]>) => {
-        this.isLoading = false;
-        this.ponudes = res.body ?? [];
-      },
-      () => {
-        this.isLoading = false;
-      }
-    );
-  }
-
-  ngOnInit(): void {
-    this.loadAll();
-  }
-
-  trackId(index: number, item: IPonude): number {
-    return item.id!;
-  }
-
-  delete(ponude: IPonude): void {
-    const modalRef = this.modalService.open(PonudeDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.ponude = ponude;
-    // unsubscribe not needed because closed completes on modal close
-    modalRef.closed.subscribe(reason => {
-      if (reason === 'deleted') {
-        this.loadAll();
-      }
+  public getSifraPostupka(): void {
+    this.ponudeService.findSiftraPostupak(this.postupak).subscribe((res: IPonude[]) => {
+      this.dataSource.data = res;
+      // eslint-disable-next-line no-console
+      console.log(res);
     });
   }
+
+  public getAllPonude(): void {
+    this.ponudeService.ponudeAll().subscribe((res: IPonude[]) => {
+      this.dataSource.data = res;
+      // eslint-disable-next-line no-console
+      console.log(res);
+    });
+  }
+  ngOnInit(): void {
+    this.getSifraPostupka();
+  }
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+  getTotalCost(): any {
+    return this.ponudes?.map(t => t.ponudjenaVrijednost).reduce((acc, value) => acc! + value!, 0);
+  }
+
+  public doFilter = (value: string): any => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  };
 }

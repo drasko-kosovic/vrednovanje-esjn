@@ -1,0 +1,18 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+tr:hover {
+  background-color: yellow;
+}
+tr {
+  cursor: pointer;
+}
+table {
+  width: 100%;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
+
+tr mat-row {
+  font-weight: bold;
+}

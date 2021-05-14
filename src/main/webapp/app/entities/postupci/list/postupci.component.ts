@@ -1,51 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-import { IPostupci } from '../postupci.model';
-import { PostupciService } from '../service/postupci.service';
-import { PostupciDeleteDialogComponent } from '../delete/postupci-delete-dialog.component';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { IPonude } from 'app/entities/ponude/ponude.model';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { IPostupci } from 'app/entities/postupci/postupci.model';
+import { PostupciService } from 'app/entities/postupci/service/postupci.service';
 
 @Component({
   selector: 'jhi-postupci',
   templateUrl: './postupci.component.html',
+  styleUrls: ['./postupci.component.scss'],
 })
-export class PostupciComponent implements OnInit {
-  postupcis?: IPostupci[];
-  isLoading = false;
+export class PostupciComponent implements OnInit, AfterViewInit {
+  postupaks?: IPostupci[];
+  public displayedColumns = ['id', 'sifra postupka', 'opis postupka', 'vrsta postupka', 'datum objave', 'broj tendera'];
+  public dataSource = new MatTableDataSource<IPostupci>();
 
-  constructor(protected postupciService: PostupciService, protected modalService: NgbModal) {}
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  loadAll(): void {
-    this.isLoading = true;
+  constructor(protected postupciService: PostupciService) {}
 
-    this.postupciService.query().subscribe(
-      (res: HttpResponse<IPostupci[]>) => {
-        this.isLoading = false;
-        this.postupcis = res.body ?? [];
-      },
-      () => {
-        this.isLoading = false;
-      }
-    );
-  }
-
-  ngOnInit(): void {
-    this.loadAll();
-  }
-
-  trackId(index: number, item: IPostupci): number {
-    return item.id!;
-  }
-
-  delete(postupci: IPostupci): void {
-    const modalRef = this.modalService.open(PostupciDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.postupci = postupci;
-    // unsubscribe not needed because closed completes on modal close
-    modalRef.closed.subscribe(reason => {
-      if (reason === 'deleted') {
-        this.loadAll();
-      }
+  public getAllPostupak(): void {
+    this.postupciService.postupakAll().subscribe((res: IPonude[]) => {
+      this.dataSource.data = res;
+      // eslint-disable-next-line no-console
+      console.log(res);
     });
   }
+  ngOnInit(): void {
+    this.getAllPostupak();
+  }
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  public doFilter = (value: string): any => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  };
 }

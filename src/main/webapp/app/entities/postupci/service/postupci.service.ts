@@ -19,6 +19,10 @@ export class PostupciService {
 
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
+  postupakAll(): any {
+    return this.http.get<IPostupci[]>(this.resourceUrl);
+  }
+
   create(postupci: IPostupci): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(postupci);
     return this.http

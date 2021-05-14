@@ -31,6 +31,10 @@ import { ErrorComponent } from './layouts/error/error.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   imports: [
@@ -58,6 +62,10 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     BrowserAnimationsModule,
     MatButtonModule,
     MatTableExporterModule,
+    MatIconModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
   ],
   providers: [
     Title,

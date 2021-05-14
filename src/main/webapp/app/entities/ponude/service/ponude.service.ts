@@ -13,8 +13,15 @@ export type EntityArrayResponseType = HttpResponse<IPonude[]>;
 @Injectable({ providedIn: 'root' })
 export class PonudeService {
   public resourceUrl = this.applicationConfigService.getEndpointFor('api/ponudes');
-
+  public resourceUrlSifraPonude = this.applicationConfigService.getEndpointFor('api/ponude');
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
+
+  findSiftraPostupak(sifra_postupka: number): any {
+    return this.http.get<IPonude[]>(`${this.resourceUrlSifraPonude}/${sifra_postupka}`);
+  }
+  ponudeAll(): any {
+    return this.http.get<IPonude[]>(this.resourceUrl);
+  }
 
   create(ponude: IPonude): Observable<EntityResponseType> {
     return this.http.post<IPonude>(this.resourceUrl, ponude, { observe: 'response' });
