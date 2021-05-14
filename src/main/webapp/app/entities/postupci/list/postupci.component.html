@@ -45,7 +45,7 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
 
-      <tr mat-row *matRowDef="let row; columns: displayedColumns" [routerLink]="['/ponude', row.id, 'view']"></tr>
+      <tr mat-row id="drasko" *matRowDef="let row; columns: displayedColumns" [routerLink]="['/ponude', row.id, 'view']"></tr>
       <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
     </table>
   </table>

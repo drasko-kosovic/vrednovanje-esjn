@@ -3,8 +3,10 @@ import { IPonude } from 'app/entities/ponude/ponude.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { IPostupci } from 'app/entities/postupci/postupci.model';
+import { IPostupci, Postupci } from 'app/entities/postupci/postupci.model';
 import { PostupciService } from 'app/entities/postupci/service/postupci.service';
+import { HttpResponse } from '@angular/common/http';
+import { IPonudjaci } from 'app/entities/ponudjaci/ponudjaci.model';
 
 @Component({
   selector: 'jhi-postupci',
@@ -21,15 +23,22 @@ export class PostupciComponent implements OnInit, AfterViewInit {
 
   constructor(protected postupciService: PostupciService) {}
 
-  public getAllPostupak(): void {
-    this.postupciService.postupakAll().subscribe((res: IPonude[]) => {
-      this.dataSource.data = res;
-      // eslint-disable-next-line no-console
-      console.log(res);
+  // public getAllPostupak(): void {
+  //   this.postupciService.postupakAll().subscribe((res: IPonude[]) => {
+  //     this.dataSource.data = res;
+  //     // eslint-disable-next-line no-console
+  //     console.log(res);
+  //   });
+
+  // }
+  loadAll(): void {
+    this.postupciService.query().subscribe((res: HttpResponse<IPostupci[]>) => {
+      this.dataSource.data = res.body ?? [];
     });
   }
+
   ngOnInit(): void {
-    this.getAllPostupak();
+    this.loadAll();
   }
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
