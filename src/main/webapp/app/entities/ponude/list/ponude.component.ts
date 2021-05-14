@@ -9,6 +9,7 @@ import { PonudeDeleteDialogComponent } from '../delete/ponude-delete-dialog.comp
 @Component({
   selector: 'jhi-ponude',
   templateUrl: './ponude.component.html',
+  styleUrls: ['./ponude.component.scss'],
 })
 export class PonudeComponent implements OnInit {
   ponudes?: IPonude[];
