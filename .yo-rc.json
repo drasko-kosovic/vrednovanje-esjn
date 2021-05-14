@@ -43,6 +43,9 @@
     "clientPackageManager": "npm",
     "languages": ["sr", "en"],
     "entities": ["Ponude", "Ponudjaci", "Postupci", "Specifikacije"],
-    "lastLiquibaseTimestamp": 1621018700000
+    "lastLiquibaseTimestamp": 1621018700000,
+    "herokuAppName": "vrednovanje",
+    "herokuDeployType": "git",
+    "herokuJavaVersion": "11"
   }
 }
