@@ -1,12 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { IPonude } from 'app/entities/ponude/ponude.model';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { IPostupci, Postupci } from 'app/entities/postupci/postupci.model';
+import { IPostupci } from 'app/entities/postupci/postupci.model';
 import { PostupciService } from 'app/entities/postupci/service/postupci.service';
 import { HttpResponse } from '@angular/common/http';
-import { IPonudjaci } from 'app/entities/ponudjaci/ponudjaci.model';
 
 @Component({
   selector: 'jhi-postupci',

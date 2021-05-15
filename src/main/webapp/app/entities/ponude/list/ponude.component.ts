@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, ViewChild } from '@angular/core';
 
 import { IPonude } from '../ponude.model';
 
@@ -60,7 +60,7 @@ export class PonudeComponent implements AfterViewInit, OnChanges {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
 
-  ngOnChanges(changes: SimpleChanges): void {
+  ngOnChanges(): void {
     this.getSifraPostupka();
   }
 }
