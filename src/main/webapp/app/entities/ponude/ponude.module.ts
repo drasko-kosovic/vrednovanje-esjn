@@ -28,5 +28,6 @@ import { MatInputModule } from '@angular/material/input';
   ],
   declarations: [PonudeComponent, PonudeDetailComponent, PonudeUpdateComponent, PonudeDeleteDialogComponent],
   entryComponents: [PonudeDeleteDialogComponent],
+  exports: [PonudeComponent],
 })
 export class PonudeModule {}

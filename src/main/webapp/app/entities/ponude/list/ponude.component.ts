@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 
 import { IPonude } from '../ponude.model';
 
@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './ponude.component.html',
   styleUrls: ['./ponude.component.scss'],
 })
-export class PonudeComponent implements OnInit, AfterViewInit {
+export class PonudeComponent implements AfterViewInit, OnChanges {
   ponudes?: IPonude[];
   public displayedColumns = [
     'id',
@@ -47,9 +47,7 @@ export class PonudeComponent implements OnInit, AfterViewInit {
       console.log(res);
     });
   }
-  ngOnInit(): void {
-    this.getSifraPostupka();
-  }
+
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
@@ -61,4 +59,8 @@ export class PonudeComponent implements OnInit, AfterViewInit {
   public doFilter = (value: string): any => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getSifraPostupka();
+  }
 }

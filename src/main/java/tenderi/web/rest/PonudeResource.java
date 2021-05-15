@@ -70,6 +70,12 @@ public class PonudeResource {
      * or with status {@code 500 (Internal Server Error)} if the ponude couldn't be updated.
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
+
+    @GetMapping("/ponude/{sifra_postupka}")
+    public List<Ponude> getPonude(@PathVariable Integer sifra_postupka) {
+        return ponudeRepository.findBySifraPostupka(sifra_postupka);
+    }
+
     @PutMapping("/ponudes/{id}")
     public ResponseEntity<Ponude> updatePonude(
         @PathVariable(value = "id", required = false) final Long id,
