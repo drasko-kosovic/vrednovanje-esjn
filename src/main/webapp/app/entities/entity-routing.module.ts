@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TenderHomeComponent } from 'app/entities/tender-home/tender-home.component';
 
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'tenderi', component: TenderHomeComponent },
       {
         path: 'ponude',
         data: { pageTitle: 'tenderiApp.ponude.home.title' },
@@ -25,6 +23,11 @@ import { TenderHomeComponent } from 'app/entities/tender-home/tender-home.compon
         path: 'specifikacije',
         data: { pageTitle: 'tenderiApp.specifikacije.home.title' },
         loadChildren: () => import('./specifikacije/specifikacije.module').then(m => m.SpecifikacijeModule),
+      },
+      {
+        path: 'tenderi-home',
+        data: { pageTitle: 'tenderiApp.tenderiHome.home.title' },
+        loadChildren: () => import('./tenderi-home/tenderi-home.module').then(m => m.TenderiHomeModule),
       },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
