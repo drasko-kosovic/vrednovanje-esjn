@@ -7,10 +7,10 @@ import { ActivatedRoute, Params } from '@angular/router';
   styleUrls: ['./tender-home.component.scss'],
 })
 export class TenderHomeComponent implements OnInit {
-  public sifra?: any;
+  public sifra = '';
   constructor(protected activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.sifra = this.activatedRoute.snapshot.params.id;
+    this.sifra = this.activatedRoute.snapshot.params['foo'];
   }
 }
