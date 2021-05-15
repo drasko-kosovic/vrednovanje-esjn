@@ -1,0 +1,21 @@
+entity ViewVrednovanje {
+  sifraPostupka Integer
+  sifraPonude Integer
+  brojPartije Integer
+  atc String
+  inn String
+  zastceniNaziv String
+  farmaceutskiOblikLijeka String
+  jacinaLijeka String
+  pakovanje String
+  trazenaKolicina Integer
+  procijenjenaVrijednost Double
+  ponudjenaVrijednost Double
+  rokIsporuke Integer
+  nazivPonudjaca String
+  nazivProizvodjaca String
+  bodCijena Double
+  bodRok Double
+  bodUkupno Double
+}
+readOnly ViewVrednovanje
