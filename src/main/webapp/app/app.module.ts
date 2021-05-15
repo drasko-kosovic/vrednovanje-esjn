@@ -35,6 +35,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { TenderHomeComponent } from 'app/entities/tender-home/tender-home.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [
@@ -66,6 +68,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatTabsModule,
   ],
   providers: [
     Title,
@@ -73,7 +76,15 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     { provide: NgbDateAdapter, useClass: NgbDateDayjsAdapter },
     httpInterceptorProviders,
   ],
-  declarations: [MainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
+  declarations: [
+    MainComponent,
+    NavbarComponent,
+    ErrorComponent,
+    PageRibbonComponent,
+    ActiveMenuDirective,
+    FooterComponent,
+    TenderHomeComponent,
+  ],
   bootstrap: [MainComponent],
 })
 export class AppModule {
