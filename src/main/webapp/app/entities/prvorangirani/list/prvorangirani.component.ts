@@ -1,16 +1,17 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { IViewVrednovanje } from '../view-vrednovanje.model';
-import { ViewVrednovanjeService } from '../service/view-vrednovanje.service';
+
+import { IPrvorangirani } from '../prvorangirani.model';
+import { PrvorangiraniService } from 'app/entities/prvorangirani/service/prvorangirani.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-@Component({
-  selector: 'jhi-view-vrednovanje',
-  templateUrl: './view-vrednovanje.component.html',
-})
-export class ViewVrednovanjeComponent implements OnInit {
-  viewVrednovanjes?: IViewVrednovanje[];
 
+@Component({
+  selector: 'jhi-prvorangirani',
+  templateUrl: './prvorangirani.component.html',
+})
+export class PrvorangiraniComponent implements OnInit {
+  prvorangiranis?: IPrvorangirani[];
   public displayedColumns = [
     'id',
     'sifra postupka',
@@ -28,17 +29,17 @@ export class ViewVrednovanjeComponent implements OnInit {
     'rok isporuke',
     'naziv ponudjaca',
   ];
-  public dataSource = new MatTableDataSource<IViewVrednovanje>();
+  public dataSource = new MatTableDataSource<IPrvorangirani>();
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() postupak: any;
-  constructor(protected vrednovanjeService: ViewVrednovanjeService) {}
+  constructor(protected prvorangiraniService: PrvorangiraniService) {}
   ngOnInit(): void {
-    this.getAllVrednovanjei();
+    this.getAllPrvorangirani();
   }
-  public getAllVrednovanjei(): void {
-    this.vrednovanjeService.vrednovanjeAll().subscribe((res: IViewVrednovanje[]) => {
+  public getAllPrvorangirani(): void {
+    this.prvorangiraniService.prvorangiraniAll().subscribe((res: IPrvorangirani[]) => {
       this.dataSource.data = res;
       // eslint-disable-next-line no-console
       console.log(res);

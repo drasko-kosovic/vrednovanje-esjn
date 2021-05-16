@@ -34,6 +34,11 @@ import { RouterModule } from '@angular/router';
 
         loadChildren: () => import('./view-vrednovanje/view-vrednovanje.module').then(m => m.ViewVrednovanjeModule),
       },
+      {
+        path: 'prvorangirani',
+        data: { pageTitle: 'tenderiApp.prvorangirani.home.title' },
+        loadChildren: () => import('./prvorangirani/prvorangirani.module').then(m => m.PrvorangiraniModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],
