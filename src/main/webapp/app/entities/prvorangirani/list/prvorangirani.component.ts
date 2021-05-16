@@ -45,4 +45,8 @@ export class PrvorangiraniComponent implements OnInit {
       console.log(res);
     });
   }
+
+  public doFilter = (value: string): any => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  };
 }

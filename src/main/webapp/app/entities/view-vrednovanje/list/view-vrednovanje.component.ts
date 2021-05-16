@@ -27,6 +27,10 @@ export class ViewVrednovanjeComponent implements OnInit {
     'ponudjena vrijednost',
     'rok isporuke',
     'naziv ponudjaca',
+    'naziv proizvodjaca',
+    'bod cijena',
+    'bod rok',
+    'bod ukupno',
   ];
   public dataSource = new MatTableDataSource<IViewVrednovanje>();
 
@@ -44,4 +48,7 @@ export class ViewVrednovanjeComponent implements OnInit {
       console.log(res);
     });
   }
+  public doFilter = (value: string): any => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  };
 }
