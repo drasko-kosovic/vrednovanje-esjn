@@ -1,0 +1,98 @@
+application {
+  config {
+    applicationType monolith
+    authenticationType jwt
+    baseName tenderi
+    blueprints []
+    buildTool maven
+    cacheProvider ehcache
+    clientFramework angularX
+    clientPackageManager npm
+    clientTheme materia
+    clientThemeVariant dark
+    creationTimestamp 1621017521320
+    databaseType sql
+    devDatabaseType postgresql
+    dtoSuffix DTO
+    enableHibernateCache false
+    enableSwaggerCodegen false
+    enableTranslation true
+    jhiPrefix jhi
+    jhipsterVersion "7.0.1"
+    jwtSecretKey "MTRhMTk5OTQwNGQ2MmFjZjUyZTI5ZDlmY2RjNWQ0ODgzNjk2NzVmYTE5ZTJkYjNhY2I2M2QxMDA4NDgxMWY4Nzc2OGI0Yjc3ZTFhNjQ2NTNlYjdhMjM2NDZlZWY2YTdiNTBjZmY3YTU0NDk2ZGIwZDA0MzU1YzUzMWI2NzU4OTE="
+    languages [sr, en]
+    messageBroker false
+    nativeLanguage sr
+    otherModules []
+    packageName tenderi
+    prodDatabaseType postgresql
+    reactive false
+    searchEngine false
+    serverPort 8080
+    serviceDiscoveryType false
+    skipClient false
+    skipServer false
+    skipUserManagement false
+    testFrameworks []
+    websocket false
+    withAdminUi false
+  }
+
+  entities Ponude, Ponudjaci, Postupci, Specifikacije
+}
+
+entity Ponude {
+  sifraPostupka Integer required
+  sifraPonude Integer required
+  brojPartije Integer required
+  nazivPonudjaca String required
+  nazivProizvodjaca String
+  zastceniNaziv String
+  ponudjenaVrijednost Double required
+  rokIsporuke Integer required
+}
+entity Ponudjaci {
+  nazivPonudjaca String required
+  odgovornoLice String required
+  adresaPonudjaca String
+  bankaRacun String
+}
+entity Postupci {
+  sifraPostupka Integer required
+  brojTendera String
+  opisPostupka String required
+  vrstaPostupka String required
+  datumObjave LocalDate
+}
+entity Specifikacije {
+  sifraPostupka Integer required
+  brojPartije Integer required
+  atc String
+  inn String
+  farmaceutskiOblikLijeka String
+  jacinaLijeka String
+  trazenaKolicina Integer required
+  pakovanje String
+  procijenjenaVrijednost Double required
+}
+entity ViewVrednovanje {
+  sifraPostupka Integer
+  sifraPonude Integer
+  brojPartije Integer
+  nazivPonudjaca String
+  procijenjenaVrijednost Double
+  ponudjenaVrijednost Double
+  trazenaKolicina Integer
+  atc String
+  inn String
+  zastceniNaziv String
+  farmaceutskiOblikLijeka String
+  jacinaLijeka String
+  pakovanje String
+  bodIsporuka Double
+  rokIsporuke Integer
+  bodCijena Double
+  bodUkupno Double
+}
+
+readOnly ViewVrednovanje
