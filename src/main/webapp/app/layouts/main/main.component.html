@@ -24,11 +24,11 @@
       <mat-icon>menu</mat-icon>
     </button>
     <div id="proba">
-      <button class="login" mat-icon-button routerLink="/login">
+      <button [disabled]="isAuthenticated()" class="login" mat-icon-button routerLink="/login">
         <mat-icon>power_settings_new</mat-icon>
       </button>
 
-      <button class="logout" mat-icon-button (click)="logout()">
+      <button [disabled]="!isAuthenticated()" class="logout" mat-icon-button (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
       </button>
     </div>

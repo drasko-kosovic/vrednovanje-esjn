@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { IViewVrednovanje } from '../view-vrednovanje.model';
 import { ViewVrednovanjeService } from '../service/view-vrednovanje.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -7,9 +7,9 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'jhi-view-vrednovanje',
   templateUrl: './view-vrednovanje.component.html',
-  styleUrls:['./view-vrednovanje.scss'],
+  styleUrls: ['./view-vrednovanje.scss'],
 })
-export class ViewVrednovanjeComponent implements OnInit {
+export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges {
   viewVrednovanjes?: IViewVrednovanje[];
 
   public displayedColumns = [
@@ -38,12 +38,18 @@ export class ViewVrednovanjeComponent implements OnInit {
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() postupak: any;
+
   constructor(protected vrednovanjeService: ViewVrednovanjeService) {}
-  ngOnInit(): void {
-    this.getAllVrednovanjei();
-  }
+
   public getAllVrednovanjei(): void {
     this.vrednovanjeService.vrednovanjeAll().subscribe((res: IViewVrednovanje[]) => {
+      this.dataSource.data = res;
+      // eslint-disable-next-line no-console
+      console.log(res);
+    });
+  }
+  public getAllPostupciVrednovanjei(): void {
+    this.vrednovanjeService.findPostupak(2366).subscribe((res: IViewVrednovanje[]) => {
       this.dataSource.data = res;
       // eslint-disable-next-line no-console
       console.log(res);
@@ -52,4 +58,13 @@ export class ViewVrednovanjeComponent implements OnInit {
   public doFilter = (value: string): any => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.getAllPostupciVrednovanjei();
+  }
 }

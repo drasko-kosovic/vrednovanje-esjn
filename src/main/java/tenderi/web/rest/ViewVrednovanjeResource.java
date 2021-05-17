@@ -41,16 +41,15 @@ public class ViewVrednovanjeResource {
         return viewVrednovanjeRepository.findAll();
     }
 
-    /**
-     * {@code GET  /view-vrednovanjes/:id} : get the "id" viewVrednovanje.
-     *
-     * @param id the id of the viewVrednovanje to retrieve.
-     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the viewVrednovanje, or with status {@code 404 (Not Found)}.
-     */
     @GetMapping("/view-vrednovanjes/{id}")
     public ResponseEntity<ViewVrednovanje> getViewVrednovanje(@PathVariable Long id) {
         log.debug("REST request to get ViewVrednovanje : {}", id);
         Optional<ViewVrednovanje> viewVrednovanje = viewVrednovanjeRepository.findById(id);
         return ResponseUtil.wrapOrNotFound(viewVrednovanje);
+    }
+
+    @GetMapping("/vrednovanje/{sifraPostupka}")
+    public List<ViewVrednovanje> getViewVrednovanje(@PathVariable Integer sifraPostupka) {
+        return viewVrednovanjeRepository.findBySifraPotupka(sifraPostupka);
     }
 }

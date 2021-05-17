@@ -21,7 +21,7 @@ export class MainComponent implements OnInit {
   languages = LANGUAGES;
   openAPIEnabled?: boolean;
   version = '';
-  isLoggedIn = false;
+  isLoggedIn: boolean | undefined;
   @ViewChild(MatSidenav) sidenav: MatSidenav | undefined;
   constructor(
     private loginService: LoginService,
