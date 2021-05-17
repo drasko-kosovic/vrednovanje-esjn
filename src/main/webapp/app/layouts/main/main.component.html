@@ -19,18 +19,26 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-toolbar color="primary">
-    <button mat-icon-button (click)="snav.toggle()">
+  <mat-toolbar  >
+    <button class="menu "mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <button mat-icon-button routerLink="/login">
+    <div id="proba">
+    <button class="login" mat-icon-button routerLink="/login">
       <mat-icon>account_circle</mat-icon>
     </button>
 
-    <button mat-icon-button (click)="logout()">
+    <button   class="logout" mat-icon-button (click)="logout()">
       <mat-icon>account_box</mat-icon>
     </button>
+    </div>
+    <span class = "gap">File</span>
+    <span>Edit</span>
+    <span class = "filler"></span>
+    <span>About</span>
   </mat-toolbar>
+
+
   <div class="container-fluid">
     <div class="card jh-card">
       <router-outlet></router-outlet>
