@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'jhi-prvorangirani',
   templateUrl: './prvorangirani.component.html',
+  styleUrls:['./prvorangirani.component.scss'],
 })
 export class PrvorangiraniComponent implements OnInit {
   prvorangiranis?: IPrvorangirani[];

@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'jhi-view-vrednovanje',
   templateUrl: './view-vrednovanje.component.html',
+  styleUrls:['./view-vrednovanje.scss'],
 })
 export class ViewVrednovanjeComponent implements OnInit {
   viewVrednovanjes?: IViewVrednovanje[];

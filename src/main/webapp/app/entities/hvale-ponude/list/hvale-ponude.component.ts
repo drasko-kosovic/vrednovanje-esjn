@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'jhi-hvale-ponude',
   templateUrl: './hvale-ponude.component.html',
+  styleUrls:['./hvale-ponude.component.scss']
 })
 export class HvalePonudeComponent implements OnInit, AfterViewInit, OnChanges {
   hvalePonudes?: any;
