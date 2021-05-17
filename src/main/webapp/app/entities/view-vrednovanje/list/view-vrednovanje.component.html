@@ -9,6 +9,11 @@
     <input #box matInput type="text" (keyup)="doFilter(box.value)" />
   </mat-form-field>
 </div>
+<input type="text" class="form-control" [(ngModel)]="sifraPostupka" id="artikal" name="artikal" placeholder="postupak" />
+
+<button class="input-group-append btn btn-info" (click)="getAllPostupciVrednovanjei()">
+  <fa-icon icon="search"></fa-icon>
+</button>
 <button
   mat-raised-button
   (click)="exporter.exportTable('xlsx', { fileName: 'Prvorangirani', sheet: 'sheet_prvorangirani', Props: { Author: 'Draskoa' } })"

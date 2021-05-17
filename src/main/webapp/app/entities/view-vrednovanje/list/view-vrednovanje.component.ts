@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { IViewVrednovanje } from '../view-vrednovanje.model';
 import { ViewVrednovanjeService } from '../service/view-vrednovanje.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './view-vrednovanje.component.html',
   styleUrls: ['./view-vrednovanje.scss'],
 })
-export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges {
+export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges, OnInit {
   viewVrednovanjes?: IViewVrednovanje[];
 
   public displayedColumns = [
@@ -34,7 +34,7 @@ export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges {
     'bod ukupno',
   ];
   public dataSource = new MatTableDataSource<IViewVrednovanje>();
-
+  sifraPostupka?: any;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() postupak: any;
@@ -49,7 +49,7 @@ export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges {
     });
   }
   public getAllPostupciVrednovanjei(): void {
-    this.vrednovanjeService.findPostupak(2366).subscribe((res: IViewVrednovanje[]) => {
+    this.vrednovanjeService.findPostupak(this.sifraPostupka).subscribe((res: IViewVrednovanje[]) => {
       this.dataSource.data = res;
       // eslint-disable-next-line no-console
       console.log(res);
@@ -60,11 +60,15 @@ export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges {
   };
 
   ngAfterViewInit(): void {
-    this.dataSource.sort = this.sort;
+    // this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.getAllPostupciVrednovanjei();
+  }
+
+  ngOnInit(): void {
+    this.getAllVrednovanjei();
   }
 }
