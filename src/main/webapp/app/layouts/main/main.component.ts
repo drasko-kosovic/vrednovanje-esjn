@@ -21,6 +21,7 @@ export class MainComponent implements OnInit {
   languages = LANGUAGES;
   openAPIEnabled?: boolean;
   version = '';
+  isLoggedIn = false;
   @ViewChild(MatSidenav) sidenav: MatSidenav | undefined;
   constructor(
     private loginService: LoginService,
@@ -56,10 +57,12 @@ export class MainComponent implements OnInit {
   }
 
   login(): void {
+    this.isLoggedIn = true;
     this.router.navigate(['/login']);
   }
 
   logout(): void {
+    this.isLoggedIn = false;
     this.collapseNavbar();
     this.loginService.logout();
     this.router.navigate(['']);

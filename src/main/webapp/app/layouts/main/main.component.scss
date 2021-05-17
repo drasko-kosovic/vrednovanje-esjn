@@ -1,27 +1,24 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-
 .mat-toolbar {
   background: black;
-  color: #fff
+  color: #fff;
 }
-#proba{
-   display: flex;
+#proba {
+  display: flex;
   justify-content: flex-end;
 
   padding: 10px;
-  margin-left: 95%;
 }
-.menu{
-  display:flex;
-  justify-content: flex-start;
-}
-.login{
+.menu {
   display: flex;
   justify-content: flex-start;
-
 }
-.logout{
+.login {
+  display: flex;
+  justify-content: flex-start;
+}
+.logout {
   display: flex;
   justify-content: flex-start;
 }
