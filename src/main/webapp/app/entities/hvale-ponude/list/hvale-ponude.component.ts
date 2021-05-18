@@ -39,7 +39,7 @@ export class HvalePonudeComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   public getAllHvali(): void {
-    this.hvaleService.hvali(this.sifraPostupka).subscribe((res: IHvalePonude[]) => {
+    this.hvaleService.hvali(this.postupak).subscribe((res: IHvalePonude[]) => {
       this.dataSource.data = res;
       // eslint-disable-next-line no-console
       console.log(res);

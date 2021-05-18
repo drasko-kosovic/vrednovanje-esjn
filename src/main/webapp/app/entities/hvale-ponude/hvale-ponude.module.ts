@@ -23,5 +23,6 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
   ],
   declarations: [HvalePonudeComponent, HvalePonudeDetailComponent],
+  exports: [HvalePonudeComponent],
 })
 export class HvalePonudeModule {}

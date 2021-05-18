@@ -1,16 +1,16 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { IViewVrednovanje } from '../view-vrednovanje.model';
 import { ViewVrednovanjeService } from '../service/view-vrednovanje.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { IPrvorangirani } from 'app/entities/prvorangirani/prvorangirani.model';
+
 @Component({
   selector: 'jhi-view-vrednovanje',
   templateUrl: './view-vrednovanje.component.html',
   styleUrls: ['./view-vrednovanje.scss'],
 })
-export class ViewVrednovanjeComponent implements OnInit {
+export class ViewVrednovanjeComponent implements OnInit, OnChanges {
   viewVrednovanjes?: IViewVrednovanje[];
 
   public displayedColumns = [
@@ -50,7 +50,7 @@ export class ViewVrednovanjeComponent implements OnInit {
     });
   }
   public getAllPostupciVrednovanjei(): void {
-    this.vrednovanjeService.findPostupak(this.sifraPostupka).subscribe((res: IViewVrednovanje[]) => {
+    this.vrednovanjeService.findPostupak(this.postupak).subscribe((res: IViewVrednovanje[]) => {
       this.dataSource.data = res;
       // eslint-disable-next-line no-console
       console.log(res);
@@ -61,9 +61,9 @@ export class ViewVrednovanjeComponent implements OnInit {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
 
-  // ngOnChanges(changes: SimpleChanges): void {
-  //   this.getAllPostupciVrednovanjei();
-  // }
+  ngOnChanges(): void {
+    this.getAllPostupciVrednovanjei();
+  }
 
   ngOnInit(): void {
     // this.getAllVrednovanjei();

@@ -13,7 +13,7 @@ export type EntityArrayResponseType = HttpResponse<ISpecifikacije[]>;
 @Injectable({ providedIn: 'root' })
 export class SpecifikacijeService {
   public resourceUrl = this.applicationConfigService.getEndpointFor('api/specifikacijes');
-
+  public resourceUrlPostupak = this.applicationConfigService.getEndpointFor('api/specifikacije');
   constructor(protected http: HttpClient, private applicationConfigService: ApplicationConfigService) {}
 
   create(specifikacije: ISpecifikacije): Observable<EntityResponseType> {
@@ -34,6 +34,9 @@ export class SpecifikacijeService {
 
   find(id: number): Observable<EntityResponseType> {
     return this.http.get<ISpecifikacije>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
+  findPostupak(sifraPostupka: number): any {
+    return this.http.get<ISpecifikacije>(`${this.resourceUrl}/${sifraPostupka}`);
   }
 
   query(req?: any): Observable<EntityArrayResponseType> {

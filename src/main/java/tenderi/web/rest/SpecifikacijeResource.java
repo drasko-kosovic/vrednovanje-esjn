@@ -189,6 +189,11 @@ public class SpecifikacijeResource {
         return ResponseUtil.wrapOrNotFound(specifikacije);
     }
 
+    @GetMapping("/specifikacije/{sifraPostupka}")
+    public List<Specifikacije> getSpecifikacijePostupak(@PathVariable Integer sifraPostupka) {
+        return specifikacijeRepository.findBySifraPostupka(sifraPostupka);
+    }
+
     /**
      * {@code DELETE  /specifikacijes/:id} : delete the "id" specifikacije.
      *

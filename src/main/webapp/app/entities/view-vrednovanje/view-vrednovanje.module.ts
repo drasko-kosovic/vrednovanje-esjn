@@ -25,5 +25,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule,
   ],
   declarations: [ViewVrednovanjeComponent, ViewVrednovanjeDetailComponent],
+  exports: [ViewVrednovanjeComponent],
 })
 export class ViewVrednovanjeModule {}

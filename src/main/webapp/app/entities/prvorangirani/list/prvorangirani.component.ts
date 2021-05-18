@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, ViewChild } from '@angular/core';
 
 import { IPrvorangirani } from '../prvorangirani.model';
 import { PrvorangiraniService } from 'app/entities/prvorangirani/service/prvorangirani.service';
@@ -11,7 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './prvorangirani.component.html',
   styleUrls: ['./prvorangirani.component.scss'],
 })
-export class PrvorangiraniComponent implements OnInit {
+export class PrvorangiraniComponent implements OnChanges {
   prvorangiranis?: IPrvorangirani[];
   public displayedColumns = [
     'id',
@@ -36,9 +36,9 @@ export class PrvorangiraniComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() postupak: any;
   constructor(protected prvorangiraniService: PrvorangiraniService) {}
-  ngOnInit(): void {
-    this.getAllPrvorangirani();
-  }
+  // ngOnInit(): void {
+  //   this.getAllPrvorangirani();
+  // }
   public getAllPrvorangirani(): void {
     this.prvorangiraniService.prvorangiraniAll().subscribe((res: IPrvorangirani[]) => {
       this.dataSource.data = res;
@@ -48,7 +48,7 @@ export class PrvorangiraniComponent implements OnInit {
   }
 
   public getAllPrvorangiraniPostupak(): void {
-    this.prvorangiraniService.findPostupak(this.sifraPostupka).subscribe((res: IPrvorangirani[]) => {
+    this.prvorangiraniService.findPostupak(this.postupak).subscribe((res: IPrvorangirani[]) => {
       this.dataSource.data = res;
       // eslint-disable-next-line no-console
       console.log(res);
@@ -58,4 +58,8 @@ export class PrvorangiraniComponent implements OnInit {
   public doFilter = (value: string): any => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
+
+  ngOnChanges(): void {
+    this.getAllPrvorangiraniPostupak();
+  }
 }

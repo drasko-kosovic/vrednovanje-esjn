@@ -25,5 +25,6 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
   ],
   declarations: [PrvorangiraniComponent, PrvorangiraniDetailComponent],
+  exports: [PrvorangiraniComponent],
 })
 export class PrvorangiraniModule {}

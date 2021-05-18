@@ -1,52 +1,64 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { Component, Input, OnChanges, ViewChild } from '@angular/core';
 import { ISpecifikacije } from '../specifikacije.model';
 import { SpecifikacijeService } from '../service/specifikacije.service';
-import { SpecifikacijeDeleteDialogComponent } from '../delete/specifikacije-delete-dialog.component';
+import { IPonude } from 'app/entities/ponude/ponude.model';
+import { MatSort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'jhi-specifikacije',
   templateUrl: './specifikacije.component.html',
-  styleUrls:['./specifikacije.componenet.scss'],
+  styleUrls: ['./specifikacije.componenet.scss'],
 })
-export class SpecifikacijeComponent implements OnInit {
+export class SpecifikacijeComponent implements OnChanges {
   specifikacijes?: ISpecifikacije[];
-  isLoading = false;
+  public displayedColumns = [
+    'id',
+    'sifra postupka',
+    'sifra ponude',
+    'broj partije',
+    'atc',
+    'inn',
+    'farmaceutski oblik',
+    'jacina lijeka',
+    'kolicina',
+    'pakovanje',
+    'procijenjena vrijednost',
+  ];
+  public dataSource = new MatTableDataSource<IPonude>();
 
-  constructor(protected specifikacijeService: SpecifikacijeService, protected modalService: NgbModal) {}
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @Input() postupak: any;
+  constructor(protected specifikacijeService: SpecifikacijeService) {}
 
-  loadAll(): void {
-    this.isLoading = true;
-
-    this.specifikacijeService.query().subscribe(
-      (res: HttpResponse<ISpecifikacije[]>) => {
-        this.isLoading = false;
-        this.specifikacijes = res.body ?? [];
-      },
-      () => {
-        this.isLoading = false;
-      }
-    );
-  }
-
-  ngOnInit(): void {
-    this.loadAll();
-  }
-
-  trackId(index: number, item: ISpecifikacije): number {
-    return item.id!;
-  }
-
-  delete(specifikacije: ISpecifikacije): void {
-    const modalRef = this.modalService.open(SpecifikacijeDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.specifikacije = specifikacije;
-    // unsubscribe not needed because closed completes on modal close
-    modalRef.closed.subscribe(reason => {
-      if (reason === 'deleted') {
-        this.loadAll();
-      }
+  public getSifraPostupka(): void {
+    this.specifikacijeService.findPostupak(this.postupak).subscribe((res: ISpecifikacije[]) => {
+      this.dataSource.data = res;
+      // eslint-disable-next-line no-console
+      console.log(res);
     });
+  }
+
+  // public getAllPonude(): void {
+  //     this.specifikacijeService.query().subscribe((res: IPonude[]) => {
+  //       this.dataSource.data = res;
+  //       // eslint-disable-next-line no-console
+  //       console.log(res);
+  //     });
+  //   }
+
+  // ngAfterViewInit(): void {
+  //   this.dataSource.sort = this.sort;
+  //   this.dataSource.paginator = this.paginator;
+  // }
+
+  public doFilter = (value: string): any => {
+    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  };
+
+  ngOnChanges(): void {
+    this.getSifraPostupka();
   }
 }
