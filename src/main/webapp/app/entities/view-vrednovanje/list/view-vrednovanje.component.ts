@@ -4,6 +4,7 @@ import { ViewVrednovanjeService } from '../service/view-vrednovanje.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { IPrvorangirani } from 'app/entities/prvorangirani/prvorangirani.model';
 @Component({
   selector: 'jhi-view-vrednovanje',
   templateUrl: './view-vrednovanje.component.html',
@@ -55,6 +56,7 @@ export class ViewVrednovanjeComponent implements OnInit {
       console.log(res);
     });
   }
+
   public doFilter = (value: string): any => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };

@@ -25,6 +25,6 @@ export class ViewVrednovanjeService {
   }
 
   findPostupak(sifraPostupka: number): any {
-    return this.http.get<IViewVrednovanje>(`${this.resourceUrlPostupak}/${sifraPostupka}`, { observe: 'response' });
+    return this.http.get<IViewVrednovanje>(`${this.resourceUrlPostupak}/${sifraPostupka}`);
   }
 }
