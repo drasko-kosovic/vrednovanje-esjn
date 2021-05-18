@@ -27,10 +27,14 @@
       <button [disabled]="isAuthenticated()" class="login" mat-icon-button routerLink="/login">
         <mat-icon>power_settings_new</mat-icon>
       </button>
+      <button [disabled]="isAuthenticated()" class="login" mat-icon-button routerLink="account/register">
+        <mat-icon>person_add</mat-icon>
+      </button>
 
       <button [disabled]="!isAuthenticated()" class="logout" mat-icon-button (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
       </button>
+
     </div>
   </mat-toolbar>
 

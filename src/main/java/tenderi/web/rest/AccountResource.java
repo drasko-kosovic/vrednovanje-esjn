@@ -6,12 +6,14 @@ import javax.validation.Valid;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import tenderi.domain.User;
 import tenderi.repository.UserRepository;
 import tenderi.security.SecurityUtils;
 import tenderi.service.MailService;
+import tenderi.service.NotificationService;
 import tenderi.service.UserService;
 import tenderi.service.dto.AdminUserDTO;
 import tenderi.service.dto.PasswordChangeDTO;
@@ -41,6 +43,8 @@ public class AccountResource {
     private final UserService userService;
 
     private final MailService mailService;
+    @Autowired
+    NotificationService notificationService;
 
     public AccountResource(UserRepository userRepository, UserService userService, MailService mailService) {
         this.userRepository = userRepository;
