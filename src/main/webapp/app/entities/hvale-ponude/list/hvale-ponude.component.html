@@ -4,20 +4,20 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 
-<input type="text" class="form-control" [(ngModel)]="sifraPostupka" id="artikal" name="artikal" placeholder="postupak" />
-<button class="input-group-append btn btn-info" (click)="getAllHvali()">
-  <fa-icon icon="search"></fa-icon>
-</button>
+<!--<input type="text" class="form-control" [(ngModel)]="sifraPostupka" id="artikal" name="artikal" placeholder="postupak" />-->
+<!--<button class="input-group-append btn btn-info" (click)="getAllHvali()">-->
+<!--  <fa-icon icon="search"></fa-icon>-->
+<!--</button>-->
 
 <button mat-raised-button (click)="exporter.exportTable('xlsx', { fileName: 'Ponude', sheet: 'sheet_name', Props: { Author: 'Talha' } })">
   <img src="../../../../content/images/icons8-microsoft-excel-48.png" alt="" />
 </button>
 <div class="example-container mat-elevation-z8">
-  <div>
-    <mat-form-field fxFlex="40%">
-      <input #box matInput type="text" (keyup)="doFilter(box.value)" />
-    </mat-form-field>
-  </div>
+  <!--  <div>-->
+  <!--    <mat-form-field fxFlex="40%">-->
+  <!--      <input #box matInput type="text" (keyup)="doFilter(box.value)" />-->
+  <!--    </mat-form-field>-->
+  <!--  </div>-->
 
   <table mat-table id="ExampleTable" matTableExporter [dataSource]="dataSource" matSort matSortStart="desc" #exporter="matTableExporter">
     <ng-container matColumnDef="id">

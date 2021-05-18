@@ -4,10 +4,10 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 
-<input type="text" class="form-control" [(ngModel)]="sifraPostupka" id="artikal" name="artikal" placeholder="postupak" />
-<button class="input-group-append btn btn-info" (click)="getAllPrvorangiraniPostupak()">
-  <fa-icon icon="search"></fa-icon>
-</button>
+<!--<input type="text" class="form-control" [(ngModel)]="sifraPostupka" id="artikal" name="artikal" placeholder="postupak" />-->
+<!--<button class="input-group-append btn btn-info" (click)="getAllPrvorangiraniPostupak()">-->
+<!--  <fa-icon icon="search"></fa-icon>-->
+<!--</button>-->
 <button
   mat-raised-button
   (click)="exporter.exportTable('xlsx', { fileName: 'Prvorangirani', sheet: 'sheet_prvorangirani', Props: { Author: 'Draskoa' } })"

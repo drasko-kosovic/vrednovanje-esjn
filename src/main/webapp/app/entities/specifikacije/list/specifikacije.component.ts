@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { ISpecifikacije } from '../specifikacije.model';
 import { SpecifikacijeService } from '../service/specifikacije.service';
 import { IPonude } from 'app/entities/ponude/ponude.model';
@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './specifikacije.component.html',
   styleUrls: ['./specifikacije.componenet.scss'],
 })
-export class SpecifikacijeComponent implements OnChanges {
+export class SpecifikacijeComponent implements OnChanges, OnInit {
   specifikacijes?: ISpecifikacije[];
   public displayedColumns = [
     'id',
@@ -41,13 +41,13 @@ export class SpecifikacijeComponent implements OnChanges {
     });
   }
 
-  // public getAllPonude(): void {
-  //     this.specifikacijeService.query().subscribe((res: IPonude[]) => {
-  //       this.dataSource.data = res;
-  //       // eslint-disable-next-line no-console
-  //       console.log(res);
-  //     });
-  //   }
+  public getAllSpecifikacije(): void {
+    this.specifikacijeService.query().subscribe((res: ISpecifikacije[]) => {
+      this.dataSource.data = res;
+      // eslint-disable-next-line no-console
+      console.log(res);
+    });
+  }
 
   // ngAfterViewInit(): void {
   //   this.dataSource.sort = this.sort;
@@ -60,5 +60,9 @@ export class SpecifikacijeComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.getSifraPostupka();
+  }
+
+  ngOnInit(): void {
+    this.getAllSpecifikacije();
   }
 }

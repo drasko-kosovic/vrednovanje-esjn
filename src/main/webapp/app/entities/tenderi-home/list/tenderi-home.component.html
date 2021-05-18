@@ -1,4 +1,10 @@
-{{ sifra }}
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+
+<h2>Postupak br: {{ sifra }}</h2>
 <mat-tab-group mat-align-tabs="start">
   <mat-tab label="Ponude">
     <jhi-ponude [postupak]="sifra"></jhi-ponude>
@@ -14,6 +20,6 @@
     <jhi-hvale-ponude [postupak]="sifra"></jhi-hvale-ponude>
   </mat-tab>
   <mat-tab label="Specifikacije">
-    <!--      <jhi-specifikacije [postupak]="sifra"></jhi-specifikacije>-->
+    <!--          <jhi-specifikacije [postupak]="sifra"  ></jhi-specifikacije>-->
   </mat-tab>
 </mat-tab-group>

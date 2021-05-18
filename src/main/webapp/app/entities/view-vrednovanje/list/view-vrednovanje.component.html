@@ -3,17 +3,17 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
-<div class="trazi">
-  <mat-form-field fxFlex="40%">
-    <mat-label>Leave a comment</mat-label>
-    <input #box matInput type="text" (keyup)="doFilter(box.value)" />
-  </mat-form-field>
-</div>
-<input type="text" class="form-control" [(ngModel)]="sifraPostupka" id="artikal" name="artikal" placeholder="postupak" />
+<!--<div class="trazi">-->
+<!--  <mat-form-field fxFlex="40%">-->
+<!--    <mat-label>Leave a comment</mat-label>-->
+<!--    <input #box matInput type="text" (keyup)="doFilter(box.value)" />-->
+<!--  </mat-form-field>-->
+<!--</div>-->
+<!--<input type="text" class="form-control" [(ngModel)]="sifraPostupka" id="artikal" name="artikal" placeholder="postupak" />-->
 
-<button class="input-group-append btn btn-info" (click)="getAllPostupciVrednovanjei()">
-  <fa-icon icon="search"></fa-icon>
-</button>
+<!--<button class="input-group-append btn btn-info" (click)="getAllPostupciVrednovanjei()">-->
+<!--  <fa-icon icon="search"></fa-icon>-->
+<!--</button>-->
 <button
   mat-raised-button
   (click)="exporter.exportTable('xlsx', { fileName: 'Prvorangirani', sheet: 'sheet_prvorangirani', Props: { Author: 'Draskoa' } })"

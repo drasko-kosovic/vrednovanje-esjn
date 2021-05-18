@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 
 import { isPresent } from 'app/core/util/operators';
 import { ApplicationConfigService } from 'app/core/config/application-config.service';
-import { createRequestOption } from 'app/core/request/request-util';
 import { ISpecifikacije, getSpecifikacijeIdentifier } from '../specifikacije.model';
 
 export type EntityResponseType = HttpResponse<ISpecifikacije>;
@@ -39,9 +38,8 @@ export class SpecifikacijeService {
     return this.http.get<ISpecifikacije>(`${this.resourceUrl}/${sifraPostupka}`);
   }
 
-  query(req?: any): Observable<EntityArrayResponseType> {
-    const options = createRequestOption(req);
-    return this.http.get<ISpecifikacije[]>(this.resourceUrl, { params: options, observe: 'response' });
+  query(): any {
+    return this.http.get<ISpecifikacije[]>(this.resourceUrl);
   }
 
   delete(id: number): Observable<HttpResponse<{}>> {
