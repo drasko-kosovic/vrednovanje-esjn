@@ -33,7 +33,6 @@ public class PrvorangiraniResource {
 
     @GetMapping("/prvorangirani/{sifraPostupka}")
     public List<Prvorangirani> findByPostupakPrvorangirani(@PathVariable Integer sifraPostupka) {
-        List<Prvorangirani> prvorangirani = prvorangiraniRepository.findBySifraPonude(sifraPostupka);
-        return prvorangirani;
+        return prvorangiraniRepository.findBySifraPostupka(sifraPostupka);
     }
 }

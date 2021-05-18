@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'jhi-prvorangirani',
   templateUrl: './prvorangirani.component.html',
-  styleUrls:['./prvorangirani.component.scss'],
+  styleUrls: ['./prvorangirani.component.scss'],
 })
 export class PrvorangiraniComponent implements OnInit {
   prvorangiranis?: IPrvorangirani[];
@@ -31,7 +31,7 @@ export class PrvorangiraniComponent implements OnInit {
     'naziv ponudjaca',
   ];
   public dataSource = new MatTableDataSource<IPrvorangirani>();
-
+  sifraPostupka?: any;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() postupak: any;
@@ -41,6 +41,14 @@ export class PrvorangiraniComponent implements OnInit {
   }
   public getAllPrvorangirani(): void {
     this.prvorangiraniService.prvorangiraniAll().subscribe((res: IPrvorangirani[]) => {
+      this.dataSource.data = res;
+      // eslint-disable-next-line no-console
+      console.log(res);
+    });
+  }
+
+  public getAllPrvorangiraniPostupak(): void {
+    this.prvorangiraniService.findPostupak(this.sifraPostupka).subscribe((res: IPrvorangirani[]) => {
       this.dataSource.data = res;
       // eslint-disable-next-line no-console
       console.log(res);

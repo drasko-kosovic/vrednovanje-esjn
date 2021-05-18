@@ -14,8 +14,8 @@ import tenderi.domain.Prvorangirani;
 @SuppressWarnings("unused")
 @Repository
 public interface PrvorangiraniRepository extends JpaRepository<Prvorangirani, Long>, JpaSpecificationExecutor<Prvorangirani> {
-    @Query("select p from Prvorangirani p where p.sifraPostupka=:sifraPostupka")
-    List<Prvorangirani> findBySifraPotupka(@Param("sifraPostupka") Integer sifra);
+    //    @Query("select p from Prvorangirani p where p.sifraPostupka=:sifraPostupka")
+    List<Prvorangirani> findBySifraPostupka(@Param("sifraPostupka") Integer sifra);
 
     @Query("select p from Prvorangirani p where p.sifraPonude=:sifraPonude")
     List<Prvorangirani> findBySifraPonude(@Param("sifraPonude") Integer sifra);

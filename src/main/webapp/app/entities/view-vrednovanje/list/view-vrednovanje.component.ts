@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IViewVrednovanje } from '../view-vrednovanje.model';
 import { ViewVrednovanjeService } from '../service/view-vrednovanje.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './view-vrednovanje.component.html',
   styleUrls: ['./view-vrednovanje.scss'],
 })
-export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges, OnInit {
+export class ViewVrednovanjeComponent implements OnInit {
   viewVrednovanjes?: IViewVrednovanje[];
 
   public displayedColumns = [
@@ -59,16 +59,13 @@ export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges, OnIni
     this.dataSource.filter = value.trim().toLocaleLowerCase();
   };
 
-  ngAfterViewInit(): void {
-    // this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    this.getAllPostupciVrednovanjei();
-  }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   this.getAllPostupciVrednovanjei();
+  // }
 
   ngOnInit(): void {
-    this.getAllVrednovanjei();
+    // this.getAllVrednovanjei();
+    // eslint-disable-next-line no-console
+    console.log('da');
   }
 }
