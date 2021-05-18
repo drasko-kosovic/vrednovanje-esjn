@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 @Component({
   selector: 'jhi-hvale-ponude',
   templateUrl: './hvale-ponude.component.html',
-  styleUrls:['./hvale-ponude.component.scss']
+  styleUrls: ['./hvale-ponude.component.scss'],
 })
 export class HvalePonudeComponent implements OnInit, AfterViewInit, OnChanges {
   hvalePonudes?: any;
@@ -24,7 +24,7 @@ export class HvalePonudeComponent implements OnInit, AfterViewInit, OnChanges {
     'procijenjena vrijednost',
   ];
   public dataSource = new MatTableDataSource<IHvalePonude>();
-
+  sifraPostupka?: any;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() postupak: any;
@@ -39,7 +39,7 @@ export class HvalePonudeComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   public getAllHvali(): void {
-    this.hvaleService.hvali(456).subscribe((res: IHvalePonude[]) => {
+    this.hvaleService.hvali(this.sifraPostupka).subscribe((res: IHvalePonude[]) => {
       this.dataSource.data = res;
       // eslint-disable-next-line no-console
       console.log(res);

@@ -4,6 +4,11 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
 
+<input type="text" class="form-control" [(ngModel)]="sifraPostupka" id="artikal" name="artikal" placeholder="postupak" />
+<button class="input-group-append btn btn-info" (click)="getAllHvali()">
+  <fa-icon icon="search"></fa-icon>
+</button>
+
 <button mat-raised-button (click)="exporter.exportTable('xlsx', { fileName: 'Ponude', sheet: 'sheet_name', Props: { Author: 'Talha' } })">
   <img src="../../../../content/images/icons8-microsoft-excel-48.png" alt="" />
 </button>

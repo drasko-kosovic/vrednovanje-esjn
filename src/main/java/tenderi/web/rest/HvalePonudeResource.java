@@ -39,7 +39,7 @@ public class HvalePonudeResource {
      * @param pageable the pagination information.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of hvalePonudes in body.
      */
-    @GetMapping("/hvale-ponudes")
+    @GetMapping("/hvale-ponude")
     public ResponseEntity<List<HvalePonude>> getAllHvalePonudes(Pageable pageable) {
         log.debug("REST request to get a page of HvalePonudes");
         Page<HvalePonude> page = hvalePonudeRepository.findAll(pageable);
