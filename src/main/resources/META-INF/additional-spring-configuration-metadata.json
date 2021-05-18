@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "spring.liquibase.mail.host",
+      "type": "java.lang.String",
+      "description": "Description for spring.liquibase.mail.host."
+    }
+  ]
+}
