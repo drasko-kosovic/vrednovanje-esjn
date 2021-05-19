@@ -11,9 +11,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
-  imports: [SharedModule, PostupciRoutingModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSortModule, MatPaginatorModule],
+    imports: [SharedModule, PostupciRoutingModule, MatTableModule, MatFormFieldModule, MatInputModule, MatSortModule, MatPaginatorModule, MatIconModule],
   declarations: [PostupciComponent, PostupciDetailComponent, PostupciUpdateComponent, PostupciDeleteDialogComponent],
   entryComponents: [PostupciDeleteDialogComponent],
 })

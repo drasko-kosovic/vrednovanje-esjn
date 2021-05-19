@@ -8,7 +8,16 @@
 <!--  <input #box matInput type="text" (keyup)="doFilter(box.value)" />-->
 <!--</mat-form-field>-->
 
-<div class="example-container mat-elevation-z8">
+<!--<div class="example-container mat-elevation-z8">-->
+<button
+  id="jh-create-entity"
+  data-cy="entityCreateButton"
+  class="btn btn-primary jh-create-entity create-ponude"
+  [routerLink]="['/postupci/new']"
+>
+  <fa-icon icon="plus"></fa-icon>
+  <span>Novi Postupak</span>
+</button>
   <table mat-table id="ExampleTable" [dataSource]="dataSource" matSort matSortStart="desc">
 
       <ng-container matColumnDef="sifra postupka">
@@ -37,14 +46,17 @@
         <td mat-cell *matCellDef="let element">{{ element.datumObjave }}</td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
-       <td mat-footer-cell *matFooterCellDef></td>
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row
-        *matRowDef="let row; columns: displayedColumns"
-        [routerLink]="['/tenderi-home', { foo: row.sifraPostupka }]"
-      ></tr>
-      <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
-    </table>
+    <!-- Star Column -->
+    <ng-container matColumnDef="delete" stickyEnd>
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon id="delete" type="submit" (click)="delete(postupci)">delete</mat-icon>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
-</div>
+<!--</div>-->
