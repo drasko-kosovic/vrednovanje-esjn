@@ -13,6 +13,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatTableExporterModule,
     MatSortModule,
     MatPaginatorModule,
+    MatIconModule,
   ],
   declarations: [SpecifikacijeComponent, SpecifikacijeDetailComponent, SpecifikacijeUpdateComponent, SpecifikacijeDeleteDialogComponent],
   entryComponents: [SpecifikacijeDeleteDialogComponent],

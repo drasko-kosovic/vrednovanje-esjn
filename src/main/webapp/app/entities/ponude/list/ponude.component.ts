@@ -6,9 +6,9 @@ import { PonudeService } from '../service/ponude.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
-import { PostupciDeleteDialogComponent } from 'app/entities/postupci/delete/postupci-delete-dialog.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PonudeDeleteDialogComponent } from 'app/entities/ponude/delete/ponude-delete-dialog.component';
 
 @Component({
   selector: 'jhi-ponude',
@@ -27,6 +27,8 @@ export class PonudeComponent implements AfterViewInit, OnChanges {
     'zasticeni naziv',
     'ponudjena vrijednost',
     'rok isporuke',
+    'delete',
+    'edit',
   ];
 
   public dataSource = new MatTableDataSource<IPonude>();
@@ -47,7 +49,7 @@ export class PonudeComponent implements AfterViewInit, OnChanges {
     });
   }
   delete(ponude: IPonude[]): void {
-    const modalRef = this.modalService.open(PostupciDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    const modalRef = this.modalService.open(PonudeDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.ponude = ponude;
     // unsubscribe not needed because closed completes on modal close
     modalRef.closed.subscribe((reason: string) => {

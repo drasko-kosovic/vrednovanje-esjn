@@ -17,7 +17,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class PostupciComponent implements OnInit, AfterViewInit {
   postupaks?: IPostupci[];
 
-  public displayedColumns = ['sifra postupka', 'opis postupka', 'vrsta postupka', 'datum objave', 'broj tendera', 'delete', 'edit'];
+  public displayedColumns = ['id', 'sifra postupka', 'opis postupka', 'vrsta postupka', 'datum objave', 'broj tendera', 'delete'];
   public dataSource = new MatTableDataSource<IPostupci>();
 
   @ViewChild(MatSort) sort!: MatSort;

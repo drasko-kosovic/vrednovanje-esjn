@@ -35,7 +35,7 @@ export class SpecifikacijeService {
     return this.http.get<ISpecifikacije>(`${this.resourceUrl}/${id}`, { observe: 'response' });
   }
   findPostupak(sifraPostupka: number): any {
-    return this.http.get<ISpecifikacije>(`${this.resourceUrl}/${sifraPostupka}`);
+    return this.http.get<ISpecifikacije>(`${this.resourceUrlPostupak}/${sifraPostupka}`);
   }
 
   query(): any {
