@@ -13,6 +13,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { MatInputModule } from '@angular/material/input';
     MatTableExporterModule,
     MatSortModule,
     MatInputModule,
+    MatIconModule,
   ],
   declarations: [PonudeComponent, PonudeDetailComponent, PonudeUpdateComponent, PonudeDeleteDialogComponent],
   entryComponents: [PonudeDeleteDialogComponent],
