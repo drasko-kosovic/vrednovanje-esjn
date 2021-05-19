@@ -44,16 +44,16 @@ spring:
     # Remove 'faker' if you do not want the sample data to be loaded automatically
     contexts: dev
   mail:
-    host: smtp.gmail.com
+    host: smtp.mailgun.org
     port: 587
-    username: drasko.kosovic@gmail.com #Replace this field with your Gmail username.
-    password: ndlwsktilhszzfyr #Replace this field with your Gmail password/App password.
+    username: postmaster@sandbox4190e7f58f2a42048572bc83d201cfb6.mailgun.org #Replace this field with your Gmail username.
+    password: d598f9268a6926e6c2b23fb29adba43a-6ae2ecad-0e85ff73 #Replace this field with your Gmail password/App password.
     protocol: smtp
-    tls: true
-    properties.mail.smtp:
-      auth: true
-      starttls.enable: true
-      ssl.trust: smtp.gmail.com
+  #    tls: true
+  #    properties.mail.smtp:
+  #      auth: true
+  #      starttls.enable: true
+  #      ssl.trust: smtp.gmail.com
   messages:
     cache-duration: PT1S # 1 second, see the ISO 8601 standard
   thymeleaf:
