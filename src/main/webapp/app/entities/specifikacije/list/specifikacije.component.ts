@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, ViewChild} from '@angular/core';
 import { ISpecifikacije } from '../specifikacije.model';
 import { SpecifikacijeService } from '../service/specifikacije.service';
 import { IPonude } from 'app/entities/ponude/ponude.model';
@@ -11,7 +11,7 @@ import { MatTableDataSource } from '@angular/material/table';
   templateUrl: './specifikacije.component.html',
   styleUrls: ['./specifikacije.componenet.scss'],
 })
-export class SpecifikacijeComponent implements OnChanges, OnInit {
+export class SpecifikacijeComponent implements OnChanges,AfterViewInit{
   specifikacijes?: ISpecifikacije[];
   public displayedColumns = [
     'id',
@@ -26,6 +26,7 @@ export class SpecifikacijeComponent implements OnChanges, OnInit {
     'pakovanje',
     'procijenjena vrijednost',
   ];
+
   public dataSource = new MatTableDataSource<IPonude>();
 
   @ViewChild(MatSort) sort!: MatSort;
@@ -41,18 +42,18 @@ export class SpecifikacijeComponent implements OnChanges, OnInit {
     });
   }
 
-  public getAllSpecifikacije(): void {
-    this.specifikacijeService.query().subscribe((res: ISpecifikacije[]) => {
-      this.dataSource.data = res;
-      // eslint-disable-next-line no-console
-      console.log(res);
-    });
-  }
-
-  // ngAfterViewInit(): void {
-  //   this.dataSource.sort = this.sort;
-  //   this.dataSource.paginator = this.paginator;
+  // public getAllSpecifikacije(): void {
+  //   this.specifikacijeService.query().subscribe((res: ISpecifikacije[]) => {
+  //     this.dataSource.data = res;
+  //     // eslint-disable-next-line no-console
+  //     console.log(res);
+  //   });
   // }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+  }
 
   public doFilter = (value: string): any => {
     this.dataSource.filter = value.trim().toLocaleLowerCase();
@@ -62,7 +63,5 @@ export class SpecifikacijeComponent implements OnChanges, OnInit {
     this.getSifraPostupka();
   }
 
-  ngOnInit(): void {
-    this.getAllSpecifikacije();
-  }
+
 }

@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, ViewChild} from '@angular/core';
 import { IViewVrednovanje } from '../view-vrednovanje.model';
 import { ViewVrednovanjeService } from '../service/view-vrednovanje.service';
 import { MatTableDataSource } from '@angular/material/table';
@@ -10,11 +10,10 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './view-vrednovanje.component.html',
   styleUrls: ['./view-vrednovanje.scss'],
 })
-export class ViewVrednovanjeComponent implements OnInit, OnChanges {
+export class ViewVrednovanjeComponent implements AfterViewInit, OnChanges {
   viewVrednovanjes?: IViewVrednovanje[];
 
   public displayedColumns = [
-    'id',
     'sifra postupka',
     'sifra ponude',
     'broj partije',
@@ -49,6 +48,7 @@ export class ViewVrednovanjeComponent implements OnInit, OnChanges {
       console.log(res);
     });
   }
+
   public getAllPostupciVrednovanjei(): void {
     this.vrednovanjeService.findPostupak(this.postupak).subscribe((res: IViewVrednovanje[]) => {
       this.dataSource.data = res;
@@ -65,9 +65,8 @@ export class ViewVrednovanjeComponent implements OnInit, OnChanges {
     this.getAllPostupciVrednovanjei();
   }
 
-  ngOnInit(): void {
-    // this.getAllVrednovanjei();
-    // eslint-disable-next-line no-console
-    console.log('da');
-  }
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
+    }
 }

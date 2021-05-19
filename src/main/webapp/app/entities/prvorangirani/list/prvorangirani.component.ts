@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, Input, OnChanges, ViewChild} from '@angular/core';
 
 import { IPrvorangirani } from '../prvorangirani.model';
 import { PrvorangiraniService } from 'app/entities/prvorangirani/service/prvorangirani.service';
@@ -11,7 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './prvorangirani.component.html',
   styleUrls: ['./prvorangirani.component.scss'],
 })
-export class PrvorangiraniComponent implements OnChanges {
+export class PrvorangiraniComponent implements OnChanges,AfterViewInit {
   prvorangiranis?: IPrvorangirani[];
   public displayedColumns = [
     'id',
@@ -30,15 +30,14 @@ export class PrvorangiraniComponent implements OnChanges {
     'rok isporuke',
     'naziv ponudjaca',
   ];
+
   public dataSource = new MatTableDataSource<IPrvorangirani>();
   sifraPostupka?: any;
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @Input() postupak: any;
   constructor(protected prvorangiraniService: PrvorangiraniService) {}
-  // ngOnInit(): void {
-  //   this.getAllPrvorangirani();
-  // }
+
   public getAllPrvorangirani(): void {
     this.prvorangiraniService.prvorangiraniAll().subscribe((res: IPrvorangirani[]) => {
       this.dataSource.data = res;
@@ -50,9 +49,7 @@ export class PrvorangiraniComponent implements OnChanges {
   public getAllPrvorangiraniPostupak(): void {
     this.prvorangiraniService.findPostupak(this.postupak).subscribe((res: IPrvorangirani[]) => {
       this.dataSource.data = res;
-      // eslint-disable-next-line no-console
-      console.log(res);
-    });
+      });
   }
 
   public doFilter = (value: string): any => {
@@ -61,5 +58,10 @@ export class PrvorangiraniComponent implements OnChanges {
 
   ngOnChanges(): void {
     this.getAllPrvorangiraniPostupak();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 }

@@ -13,7 +13,7 @@ import { HttpResponse } from '@angular/common/http';
 })
 export class PostupciComponent implements OnInit, AfterViewInit {
   postupaks?: IPostupci[];
-  public displayedColumns = ['id', 'sifra postupka', 'opis postupka', 'vrsta postupka', 'datum objave', 'broj tendera'];
+  public displayedColumns = ['sifra postupka', 'opis postupka', 'vrsta postupka', 'datum objave', 'broj tendera'];
   public dataSource = new MatTableDataSource<IPostupci>();
 
   @ViewChild(MatSort) sort!: MatSort;
