@@ -63,8 +63,7 @@ public class PonudeResource {
     /**
      * {@code PUT  /ponudes/:id} : Updates an existing ponude.
      *
-     * @param id the id of the ponude to save.
-     * @param ponude the ponude to update.
+
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated ponude,
      * or with status {@code 400 (Bad Request)} if the ponude is not valid,
      * or with status {@code 500 (Internal Server Error)} if the ponude couldn't be updated.

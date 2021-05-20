@@ -30,8 +30,7 @@ public class Ponude implements Serializable {
     @Column(name = "broj_partije", nullable = false)
     private Integer brojPartije;
 
-    @NotNull
-    @Column(name = "naziv_ponudjaca", nullable = false)
+    @Column(name = "naziv_ponudjaca", nullable = true)
     private String nazivPonudjaca;
 
     @Column(name = "naziv_proizvodjaca")
