@@ -34,14 +34,11 @@
       <button [disabled]="!isAuthenticated()" class="logout" mat-icon-button (click)="logout()">
         <mat-icon>exit_to_app</mat-icon>
       </button>
-
     </div>
   </mat-toolbar>
 
   <div class="container-fluid">
-    <div class="card jh-card">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
 
     <jhi-footer></jhi-footer>
   </div>
