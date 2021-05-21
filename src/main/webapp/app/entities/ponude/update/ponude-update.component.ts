@@ -11,6 +11,7 @@ import { PonudeService } from '../service/ponude.service';
 @Component({
   selector: 'jhi-ponude-update',
   templateUrl: './ponude-update.component.html',
+  styleUrls: ['./ponude.update.scss'],
 })
 export class PonudeUpdateComponent implements OnInit {
   isSaving = false;
