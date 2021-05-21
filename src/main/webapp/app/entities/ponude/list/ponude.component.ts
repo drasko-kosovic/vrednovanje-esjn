@@ -49,7 +49,7 @@ export class PonudeComponent implements AfterViewInit, OnChanges {
     });
   }
   delete(ponude: IPonude[]): void {
-    const modalRef = this.modalService.open(PonudeDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    const modalRef = this.modalService.open(PonudeDeleteDialogComponent, { size: 'sm', backdrop: 'static' });
     modalRef.componentInstance.ponude = ponude;
     // unsubscribe not needed because closed completes on modal close
     modalRef.closed.subscribe((reason: string) => {
