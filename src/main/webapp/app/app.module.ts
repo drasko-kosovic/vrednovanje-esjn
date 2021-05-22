@@ -36,6 +36,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { _MatMenuDirectivesModule, MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   imports: [
@@ -68,6 +69,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSidenavModule,
     MatToolbarModule,
     MatTabsModule,
+    _MatMenuDirectivesModule,
+    MatMenuModule,
   ],
   providers: [
     Title,

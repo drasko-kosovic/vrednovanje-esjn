@@ -23,6 +23,14 @@
     <button class="menu" mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+
+    <button mat-button [matMenuTriggerFor]="testMenu">Click Me!</button>
+    <mat-menu #testMenu="matMenu">
+      <button mat-menu-item>Menu Item 1</button>
+      <button mat-menu-item>Menu Item 2</button>
+      <button mat-menu-item>Menu Item 3</button>
+    </mat-menu>
+
     <div id="proba">
       <button [disabled]="isAuthenticated()" class="login" mat-icon-button routerLink="/login">
         <mat-icon>power_settings_new</mat-icon>
