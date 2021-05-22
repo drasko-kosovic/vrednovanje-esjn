@@ -13,7 +13,7 @@ export interface IPrvorangirani {
   pakovanje?: string | null;
   trazenaKolicina?: number | null;
   procijenjenaVrijednost?: number | null;
-  ponudjenaJedinicnaCijena?: number | null;
+  ponudjenaVrijednost?: number | null;
   rokIsporuke?: number | null;
   nazivPonudjaca?: string | null;
   nazivProizvodjaca?: string | null;
@@ -35,7 +35,6 @@ export class Prvorangirani implements IPrvorangirani {
     public trazenaKolicina?: number | null,
     public trazenaJedinicnaCijena?: number | null,
     public procijenjenaVrijednost?: number | null,
-    public ponudjenaJedinicnaCijena?: number | null,
     public ponudjenaVrijednost?: number | null,
     public rokIsporuke?: number | null,
     public nazivPonudjaca?: string | null,

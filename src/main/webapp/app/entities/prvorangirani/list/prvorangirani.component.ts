@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnChanges, ViewChild} from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, ViewChild } from '@angular/core';
 
 import { IPrvorangirani } from '../prvorangirani.model';
 import { PrvorangiraniService } from 'app/entities/prvorangirani/service/prvorangirani.service';
@@ -11,7 +11,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './prvorangirani.component.html',
   styleUrls: ['./prvorangirani.component.scss'],
 })
-export class PrvorangiraniComponent implements OnChanges,AfterViewInit {
+export class PrvorangiraniComponent implements OnChanges, AfterViewInit {
   prvorangiranis?: IPrvorangirani[];
   public displayedColumns = [
     'id',
@@ -49,7 +49,7 @@ export class PrvorangiraniComponent implements OnChanges,AfterViewInit {
   public getAllPrvorangiraniPostupak(): void {
     this.prvorangiraniService.findPostupak(this.postupak).subscribe((res: IPrvorangirani[]) => {
       this.dataSource.data = res;
-      });
+    });
   }
 
   public doFilter = (value: string): any => {
@@ -63,5 +63,9 @@ export class PrvorangiraniComponent implements OnChanges,AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
+  }
+
+  getTotalCost(): number {
+    return <number>this.prvorangiranis?.map(t => t.ponudjenaVrijednost).reduce((acc, value) => acc! + value!, 0);
   }
 }
