@@ -2,13 +2,13 @@
   "tenderiApp": {
     "postupci": {
       "home": {
-        "title": "Postupcis",
+        "title": "Postupci",
         "refreshListLabel": "Refresh list",
-        "createLabel": "Kreiraj novi Postupci",
-        "createOrEditLabel": "Kreirajte ili izmenite Postupci",
+        "createLabel": "Kreiraj novi Postupak",
+        "createOrEditLabel": "Unesite novi postupak",
         "notFound": "No Postupcis found"
       },
-      "created": "Kreiran je novi Postupci pod nazivom {{ param }}",
+      "created": "Kreiran je novi Postupak pod nazivom {{ param }}",
       "updated": "Postupci pod nazivom {{ param }} je ažuriran",
       "deleted": "Postupci pod nazivom {{ param }} je obrisan",
       "delete": {

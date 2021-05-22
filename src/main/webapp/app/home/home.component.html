@@ -1,20 +1,12 @@
-<mat-card class="example-container mat-elevation-z24" style="margin-top: 20px; margin-left: 20px; margin-right: 20px; margin-bottom: 20px">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+<mat-card id="drasko" class="example-container mat-elevation-z24">
   <div class="row">
     <div [ngSwitch]="isAuthenticated()">
-      <!--      <div class="alert alert-success" *ngSwitchCase="true">-->
-      <!--        <span id="home-logged-message" *ngIf="account" jhiTranslate="home.logged.message" [translateValues]="{ username: account.login }"-->
-      <!--          >You are logged in as user "{{ account.login }}".</span-->
-      <!--        >-->
-      <!--      </div>-->
-
-      <mat-form-field class="example-full-width">
-        <mat-label>Leave a comment</mat-label>
-        <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
-      </mat-form-field>
-
       <img src="../../content/images/pharmacy.png" />
     </div>
   </div>
 </mat-card>
-
-<!--</mat-card>-->

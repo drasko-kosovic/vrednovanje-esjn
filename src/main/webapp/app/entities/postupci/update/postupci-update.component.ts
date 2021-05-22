@@ -11,6 +11,7 @@ import { PostupciService } from '../service/postupci.service';
 @Component({
   selector: 'jhi-postupci-update',
   templateUrl: './postupci-update.component.html',
+  styleUrls: ['./update.postupci.scss'],
 })
 export class PostupciUpdateComponent implements OnInit {
   isSaving = false;
