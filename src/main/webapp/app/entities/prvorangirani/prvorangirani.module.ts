@@ -11,6 +11,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { MatInputModule } from '@angular/material/input';
     MatSortModule,
     MatPaginatorModule,
     MatInputModule,
+    MatIconModule,
   ],
   declarations: [PrvorangiraniComponent, PrvorangiraniDetailComponent],
   exports: [PrvorangiraniComponent],

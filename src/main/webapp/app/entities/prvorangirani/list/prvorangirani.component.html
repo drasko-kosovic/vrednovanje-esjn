@@ -3,9 +3,11 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 </head>
-<div>
-  <mat-form-field fxFlex="40%">
+<div class="container-search">
+  <mat-form-field class="search-item" fxFlex="40%">
+    <!--    <mat-label>Nadji</mat-label>-->
     <input #box matInput type="text" (keyup)="doFilter(box.value)" />
+    <!--    <mat-icon>search</mat-icon>-->
   </mat-form-field>
 </div>
 
@@ -16,12 +18,6 @@
   <img src="../../../../content/images/icons8-microsoft-excel-48.png" alt="" />
 </button>
 <div class="example-container mat-elevation-z8">
-  <!--  <div>-->
-  <!--    <mat-form-field fxFlex="40%">-->
-  <!--      <input #box matInput type="text" (keyup)="doFilter(box.value)" />-->
-  <!--    </mat-form-field>-->
-  <!--  </div>-->
-
   <table mat-table id="ExampleTable" matTableExporter [dataSource]="dataSource" matSort matSortStart="desc" #exporter="matTableExporter">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
