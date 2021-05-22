@@ -9,6 +9,8 @@ import { SessionStorageService } from 'ngx-webstorage';
 import { ProfileService } from 'app/layouts/profiles/profile.service';
 import { VERSION } from 'app/app.constants';
 import { MatSidenav } from '@angular/material/sidenav';
+import { Account } from 'app/core/auth/account.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'jhi-main',
@@ -22,12 +24,14 @@ export class MainComponent implements OnInit {
   openAPIEnabled?: boolean;
   version = '';
   isLoggedIn: boolean | undefined;
+  account?: Account | null = null;
+  authSubscription?: Subscription;
   @ViewChild(MatSidenav) sidenav: MatSidenav | undefined;
   constructor(
+    private accountService: AccountService,
     private loginService: LoginService,
     private translateService: TranslateService,
     private sessionStorage: SessionStorageService,
-    private accountService: AccountService,
     private profileService: ProfileService,
     private router: Router
   ) {
@@ -40,6 +44,7 @@ export class MainComponent implements OnInit {
     this.profileService.getProfileInfo().subscribe(profileInfo => {
       this.inProduction = profileInfo.inProduction;
       this.openAPIEnabled = profileInfo.openAPIEnabled;
+      this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
     });
   }
 

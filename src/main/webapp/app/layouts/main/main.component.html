@@ -61,11 +61,11 @@
         <span>Registruj se </span>
       </a>
 
-      <a mat-list-item routerLink="login">
+      <a [hidden]="isAuthenticated()" mat-list-item routerLink="login">
         <mat-icon>account_circle</mat-icon>
         <span>Prijavi se </span>
       </a>
-      <a mat-list-item (click)="logout()">
+      <a [hidden]="!isAuthenticated()" mat-list-item (click)="logout()">
         <mat-icon>logout</mat-icon>
         <span>Odjavi se</span>
       </a>
@@ -76,6 +76,7 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
+    <h4>prijavljen ste kao: {{ account?.login }}</h4>
   </mat-toolbar>
 
   <div class="main">
