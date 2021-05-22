@@ -4,12 +4,6 @@
   background: black;
   color: #fff;
 }
-#proba {
-  display: flex;
-  justify-content: flex-end;
-
-  padding: 10px;
-}
 .menu {
   display: flex;
   justify-content: flex-start;
@@ -32,8 +26,15 @@
 .course-actions {
   text-align: center;
 }
-.main {
-  //margin-top: 20px;
-  //margin-left: 40px;
-  //margin-right: 40px;
+
+.container {
+  display: flex;
+  justify-content: flex-end;
+}
+.container-item {
+  font-size: 2px;
+  font-family: Arial;
+  font-style: italic;
+  color: white;
+  margin-right: 10px;
 }

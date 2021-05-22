@@ -1,6 +1,5 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 .example-container mat-elevation-z20 {
-}
-.course-card {
-  margin: 20px 10px 20px 20px;
+  display: flex;
+  flex: 0 0 auto;
 }
