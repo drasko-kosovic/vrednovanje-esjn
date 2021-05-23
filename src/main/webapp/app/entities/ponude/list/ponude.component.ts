@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnChanges, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 
 import { IPonude } from '../ponude.model';
 
@@ -9,14 +9,19 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PonudeDeleteDialogComponent } from 'app/entities/ponude/delete/ponude-delete-dialog.component';
+import { Account } from 'app/core/auth/account.model';
+import { Subscription } from 'rxjs';
+import { AccountService } from 'app/core/auth/account.service';
 
 @Component({
   selector: 'jhi-ponude',
   templateUrl: './ponude.component.html',
   styleUrls: ['./ponude.component.scss'],
 })
-export class PonudeComponent implements AfterViewInit, OnChanges {
+export class PonudeComponent implements AfterViewInit, OnChanges, OnInit {
   ponudes?: IPonude[];
+  account: Account | null = null;
+  authSubscription?: Subscription;
   public displayedColumns = [
     'id',
     'sifra postupka',
@@ -40,7 +45,8 @@ export class PonudeComponent implements AfterViewInit, OnChanges {
     protected ponudeService: PonudeService,
     protected activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected modalService: NgbModal
+    protected modalService: NgbModal,
+    private accountService: AccountService
   ) {}
 
   public getSifraPostupka(): void {
@@ -81,5 +87,11 @@ export class PonudeComponent implements AfterViewInit, OnChanges {
 
   ngOnChanges(): void {
     this.getSifraPostupka();
+  }
+  isAuthenticated(): boolean {
+    return this.accountService.isAuthenticated();
+  }
+  ngOnInit(): void {
+    this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
   }
 }

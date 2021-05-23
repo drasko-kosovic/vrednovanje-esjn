@@ -139,5 +139,5 @@
       "not.image": "File was expected to be an image but was found to be \"{{ fileType }}\""
     }
   },
-  "footer": "Copyright © 20201 by Drasko Kosovic"
+  "footer": "Copyright © 2021 by Drasko Kosovic"
 }

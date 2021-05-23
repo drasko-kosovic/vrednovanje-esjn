@@ -11,6 +11,7 @@
 <!--<div class="example-container mat-elevation-z8">-->
 <mat-card class="example-container mat-elevation-z24" style="margin-top: 20px; margin-left: 20px; margin-right: 20px; margin-bottom: 20px">
   <button
+    *jhiHasAnyAuthority="'ROLE_ADMIN'"
     id="jh-create-entity"
     data-cy="entityCreateButton"
     class="btn btn-primary jh-create-entity create-ponude"
@@ -55,7 +56,7 @@
     <ng-container matColumnDef="delete" stickyEnd>
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <mat-icon id="delete" type="submit" (click)="delete(element)">delete</mat-icon>
+        <mat-icon *jhiHasAnyAuthority="'ROLE_ADMIN'" id="delete" type="submit" (click)="delete(element)">delete</mat-icon>
       </td>
     </ng-container>
 
