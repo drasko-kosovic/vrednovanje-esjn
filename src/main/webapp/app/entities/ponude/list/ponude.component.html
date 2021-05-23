@@ -22,6 +22,10 @@
   <fa-icon icon="plus"></fa-icon>
   <span>Nova Ponuda</span>
 </button>
+<button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-success">
+  <fa-icon icon="plus"></fa-icon>
+  <span>Unesi Exel Tabelu</span>
+</button>
 <mat-card class="example-container mat-elevation-z24">
   <button mat-raised-button (click)="exporter.exportTable('xlsx', { fileName: 'Ponude', sheet: 'sheet_name', Props: { Author: 'Talha' } })">
     <img src="../../../../content/images/icons8-microsoft-excel-48.png" alt="" />
