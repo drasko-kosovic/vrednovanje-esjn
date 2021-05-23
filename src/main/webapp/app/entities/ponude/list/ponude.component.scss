@@ -12,3 +12,13 @@ tr.mat-footer-row {
 #edit {
   color: green;
 }
+.container-search {
+  display: flex;
+
+  justify-content: flex-end;
+}
+.search-item {
+  margin-top: 10px;
+
+  width: 260px;
+}

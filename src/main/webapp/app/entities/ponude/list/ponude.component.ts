@@ -22,6 +22,9 @@ export class PonudeComponent implements AfterViewInit, OnChanges, OnInit {
   ponudes?: IPonude[];
   account: Account | null = null;
   authSubscription?: Subscription;
+  ukupnoProcijenjena?: number;
+  ukupnaPonudjena?: number;
+  nadji?: any;
   public displayedColumns = [
     'id',
     'sifra postupka',
@@ -40,7 +43,7 @@ export class PonudeComponent implements AfterViewInit, OnChanges, OnInit {
 
   @ViewChild(MatSort) sort!: MatSort;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @Input() postupak: any;
+  @Input() postupak?: any;
   constructor(
     protected ponudeService: PonudeService,
     protected activatedRoute: ActivatedRoute,
@@ -77,12 +80,14 @@ export class PonudeComponent implements AfterViewInit, OnChanges, OnInit {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
   }
-  getTotalCost(): any {
-    return this.ponudes?.map(t => t.ponudjenaVrijednost).reduce((acc, value) => acc! + value!, 0);
-  }
+  // getTotalCost(): any {
+  //   return this.ponudes?.map(t => t.ponudjenaVrijednost).reduce((acc, value) => acc! + value!, 0);
+  //
+  // }
 
-  public doFilter = (value: string): any => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  doFilter = (iznos: string): any => {
+    this.dataSource.filter = iznos.trim().toLocaleLowerCase();
+    this.ukupnaPonudjena = this.dataSource.filteredData.map(t => t.ponudjenaVrijednost).reduce((acc, value) => acc! + value!, 0);
   };
 
   ngOnChanges(): void {
@@ -91,6 +96,7 @@ export class PonudeComponent implements AfterViewInit, OnChanges, OnInit {
   isAuthenticated(): boolean {
     return this.accountService.isAuthenticated();
   }
+
   ngOnInit(): void {
     this.authSubscription = this.accountService.getAuthenticationState().subscribe(account => (this.account = account));
   }
