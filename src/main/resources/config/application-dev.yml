@@ -21,6 +21,9 @@ logging:
     tenderi: DEBUG
 
 spring:
+  servlet:
+    multipart: max-file-size=2MB, max-request-size=2MB
+
   devtools:
     restart:
       enabled: true

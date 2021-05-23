@@ -20,7 +20,7 @@ import tenderi.helper.ExcelHelper;
 import tenderi.message.ResponseMessage;
 import tenderi.service.ExcelService;
 
-@CrossOrigin("http://localhost:8080")
+@CrossOrigin("*")
 @Controller
 @RequestMapping("/api/excel")
 public class ExcelController {
