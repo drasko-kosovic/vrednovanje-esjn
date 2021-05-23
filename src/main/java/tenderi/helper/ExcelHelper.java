@@ -23,9 +23,9 @@ public class ExcelHelper {
         "Sifra Ponude",
         "Sifra Postupka",
         "Broj Partije",
-        "Naziv Ponudkaca",
+        "Naziv Ponudjaca",
         "Naziv Proizvodjaca",
-        "Zasticeni Nax=ziv",
+        "Zasticeni Naziv",
         "Ponudjena Vrijednost",
         "Rok Isporuke",
     };

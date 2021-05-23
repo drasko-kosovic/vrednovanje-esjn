@@ -18,8 +18,8 @@ public class ExcelService {
 
     public void save(MultipartFile file) {
         try {
-            List<Ponude> tutorials = ExcelHelper.excelToTutorials(file.getInputStream());
-            repository.saveAll(tutorials);
+            List<Ponude> ponude = ExcelHelper.excelToTutorials(file.getInputStream());
+            repository.saveAll(ponude);
         } catch (IOException e) {
             throw new RuntimeException("fail to store excel data: " + e.getMessage());
         }
