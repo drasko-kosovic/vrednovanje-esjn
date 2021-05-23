@@ -13,6 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class PrvorangiraniComponent implements OnChanges, AfterViewInit {
   prvorangiranis?: IPrvorangirani[];
+  ukupnaPonudjena?: number | null | undefined;
   public displayedColumns = [
     'id',
     'sifra postupka',
@@ -52,8 +53,9 @@ export class PrvorangiraniComponent implements OnChanges, AfterViewInit {
     });
   }
 
-  public doFilter = (value: string): any => {
-    this.dataSource.filter = value.trim().toLocaleLowerCase();
+  doFilter = (iznos: string): any => {
+    this.dataSource.filter = iznos.trim().toLocaleLowerCase();
+    this.ukupnaPonudjena = this.dataSource.filteredData.map(t => t.ponudjenaVrijednost).reduce((acc, value) => acc! + value!, 0);
   };
 
   ngOnChanges(): void {
