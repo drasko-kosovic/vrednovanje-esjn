@@ -39,7 +39,7 @@ public class ExcelHelper {
         return true;
     }
 
-    public static ByteArrayInputStream tutorialsToExcel(List<Ponude> ponude) {
+    public static ByteArrayInputStream tutorialsToExcel(List<Ponude> ponudes) {
         try (Workbook workbook = new XSSFWorkbook(); ByteArrayOutputStream out = new ByteArrayOutputStream();) {
             Sheet sheet = workbook.createSheet(SHEET);
 
@@ -52,19 +52,19 @@ public class ExcelHelper {
             }
 
             int rowIdx = 1;
-            for (Ponude ponudes : ponude) {
+            for (Ponude ponude : ponudes) {
                 Row row = sheet.createRow(rowIdx++);
 
-                row.createCell(0).setCellValue(ponudes.getId());
-                row.createCell(1).setCellValue(ponudes.getSifraPostupka());
-                row.createCell(2).setCellValue(ponudes.getSifraPonude());
-                row.createCell(3).setCellValue(ponudes.getBrojPartije());
+                row.createCell(0).setCellValue(ponude.getId());
+                row.createCell(1).setCellValue(ponude.getSifraPostupka());
+                row.createCell(2).setCellValue(ponude.getSifraPonude());
+                row.createCell(3).setCellValue(ponude.getBrojPartije());
 
-                row.createCell(4).setCellValue(ponudes.getNazivPonudjaca());
-                row.createCell(5).setCellValue(ponudes.getNazivProizvodjaca());
-                row.createCell(6).setCellValue(ponudes.getZastceniNaziv());
-                row.createCell(7).setCellValue(ponudes.getPonudjenaVrijednost());
-                row.createCell(8).setCellValue(ponudes.getRokIsporuke());
+                row.createCell(4).setCellValue(ponude.getNazivPonudjaca());
+                row.createCell(5).setCellValue(ponude.getNazivProizvodjaca());
+                row.createCell(6).setCellValue(ponude.getZastceniNaziv());
+                row.createCell(7).setCellValue(ponude.getPonudjenaVrijednost());
+                row.createCell(8).setCellValue(ponude.getRokIsporuke());
             }
 
             workbook.write(out);
